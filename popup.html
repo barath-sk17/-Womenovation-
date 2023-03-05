@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-4">
+        <div class="popup" id="popup">
+            <br><br><br>
+            <p>Do you want to Confirm?</p>
+            <button type="button" onclick="closePopup()">yes</button>&nbsp;&nbsp;&nbsp;&nbsp;<a href="complaint.html" class="btn1">no</a>
+        </div>
+    </div>
+
+<script>
+    let popup = document.getElementById("popup");
+    function openPopup(){
+        popup.classList.add("open-popup");
+    }
+
+    function closePopup(){
+        popup.classList.remove("open-popup");
+    }
+</script>
+</body>
+</html>

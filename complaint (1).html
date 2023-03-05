@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Portal</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+
+    <!--    Header Section    -->
+
+    <div class="header1">
+        <div class="container1">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="picture/logo.png" alt="125px">
+                </div>
+
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="home.html">Home</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <h2> Reporting Anonymously </h2><br>
+                    <div class="cool">
+                        <br>
+                        <form onsubmit="return confirm('Do you really want to submit the form?');" method="post" enctype="multipart/form-data" action="complaint.php?act=submit">
+                            <label for="case">Case Category</label><br>
+                            <select required name="case_category" id="case_category">
+                                <option value="">-Select-</option>
+                                <option value="Domestic Violence">Domestic Violence</option>
+                                <option value="Family Violence">Family Violence</option>
+                                <option value="Sexual Violence and Harassment">Sexual Violence and Harassment</option>
+                                <option value="Non physical form of abuse">Non physical form of abuse</option>
+                            </select><br><br>
+
+                            <label for="datetime">Date & Time of Incident</label><br>
+                            <input type="datetime-local" required id="datetime" name="datetime"><br><br>
+
+                            <label for="location">Location of Incident</label><br>
+                            <input id="location" required name="location" type="text" placeholder="Location"><br><br>
+
+                            <label for="description">Description</label><br>
+                            <textarea name="description" required id="description" cols="100" rows="30"></textarea><br><br>
+
+                            <label for="evidence">Evidence Format</label><br>
+                            <textarea name="evidence" required id="evidence" cols="50" rows="8"></textarea><br><br>
+
+                            <label for="myfile">Upload ( i.e. Evidence )</label><br>
+                            <input type="file" required id="myfile" name="myfile[]" multiple><br><br>
+                            <button type="submit" class="btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let popup = document.getElementById("popup");
+        let background = document.getElementsByClassName("header1")
+        function openPopup() {
+            popup.classList.add("open-popup");
+            background.classList.add("back-1");
+        }
+
+        function closePopup() {
+            popup.classList.remove("open-popup");
+        }
+    </script>
+</body>
+
+</html>

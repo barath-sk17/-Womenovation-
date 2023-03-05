@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="images/women.png" width="100%">
+                </div>
+
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="register()">Register</span>
+                            <hr id="indicator">
+                        </div>
+                        <form id="login-form" method="post">
+                            <input type="text" name="username" id="username" placeholder="Username">
+                            <input type="password" name="password" id="password" placeholder="Password">
+                            <span class="error" style="color:red;font-size:10px;width:auto"></span>
+                            <button type="button" class="btn" onclick="FunctionSubmit()">Login</button>
+                            <a href="">Forgot password</a>
+                        </form>
+
+                        <form id="reg-form" method="post" action="register.php">
+                            <input required type="text" name="username" placeholder="Username">
+                            <input required type="email" name="email" placeholder="Email">
+                            <input required type="password" name="password" placeholder="Password">
+                            <button type="submit" class="btn">Register</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <!------   js for form (login and register)  ------>
+    <script>
+        var Loginform = document.getElementById("login-form");
+        var Registerform = document.getElementById("reg-form");
+        var Indicator = document.getElementById("indicator")
+
+        function register() {
+            Registerform.style.transform = "translateX(0px)";
+            Loginform.style.transform = "translateX(0px)";
+            Indicator.style.transform = "translateX(100px)";
+        }
+
+        function login() {
+            Registerform.style.transform = "translateX(300px)";
+            Loginform.style.transform = "translateX(300px)";
+            Indicator.style.transform = "translateX(0px)";
+        }
+
+        function FunctionSubmit() {
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            if (username != "") {
+                if (password != "") {
+                    $.ajax({
+                        type: "POST",
+                        url: "login.php?act=login",
+                        data: {
+                            username: username,
+                            password: password
+                        },
+                        success: function (data) {
+                            if (data > 0) {
+                                $('.error').html("");
+                                window.location = "home.html";
+                            }else{
+                                $('.error').html("Invalid Credentials");
+                            }
+                        }
+
+                    });
+                }else{
+                    $("#password").focus();
+                    $('.error').html("Please enter password");
+                }
+            }else{
+                $("#username").focus();
+                $('.error').html("Please enter username");
+            }
+        }
+    </script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDe5gMccFJTeQOYt-Af9yS9ve3WuXZQyCA",
+            authDomain: "womenovation-hackathon.firebaseapp.com",
+            databaseURL: "https://womenovation-hackathon-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "womenovation-hackathon",
+            storageBucket: "womenovation-hackathon.appspot.com",
+            messagingSenderId: "662246306813",
+            appId: "1:662246306813:web:e30d3a3b2f7c6f16485f94",
+            measurementId: "G-4CLTKV9V1S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+</body>
+
+</html>
