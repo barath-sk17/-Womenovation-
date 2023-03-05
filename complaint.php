@@ -46,7 +46,7 @@ VALUES ('".$case."', '".$datetime."', '".$location."','".$description."', '".$ev
             }
         }
         if ( !$InsertVal ) {
-            header("location:popup.html");
+            header("location:home.html");
         }
     } else {
         echo 'Error: ' . $sql . '<br>' . mysqli_error( $conn );
