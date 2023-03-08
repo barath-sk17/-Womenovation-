@@ -1,0 +1,6 @@
+Project Design :
+     The project has been developed on the website.
+     The website has been developed in the form of registration form and login form which further leads to page which includes the complaint and counselling form
+     The complaint form includes date and time of the incident and descripton of the complaint and evidence that supports their claim.
+     The counselling page contains an chat application which has been developed on python flask.
+     
