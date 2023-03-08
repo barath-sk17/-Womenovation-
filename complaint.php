@@ -1,6 +1,7 @@
 <?php
 include 'dB.php';
 
+//hi
 if ( $_GET[ 'act' ] == 'submit' ) {
 
     $case = $_POST[ 'case_category' ];
